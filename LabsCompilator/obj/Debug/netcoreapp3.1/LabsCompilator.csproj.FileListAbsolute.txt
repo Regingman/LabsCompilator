@@ -1,0 +1,13 @@
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.exe
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.deps.json
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.runtimeconfig.json
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.runtimeconfig.dev.json
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.dll
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\bin\Debug\netcoreapp3.1\LabsCompilator.pdb
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.csprojAssemblyReference.cache
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.AssemblyInfoInputs.cache
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.AssemblyInfo.cs
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.csproj.CoreCompileInputs.cache
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.dll
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.pdb
+C:\Users\Атай\source\repos\LabsCompilator\LabsCompilator\obj\Debug\netcoreapp3.1\LabsCompilator.genruntimeconfig.cache
