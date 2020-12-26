@@ -7,6 +7,7 @@ namespace LabsCompilator
     class Program
     {
         static Regex regexLetter = new Regex(@"^[\p{L}]+$");
+        static Regex regexLetterEng = new Regex(@"^[a-zA-Z]+$");
         static Regex regexNumberFirst = new Regex(@"^[\p{N}]+$");
         static Regex regexNumber = new Regex(@"^[\p{N}]+$");
         static Regex regexNumberOrLetter = new Regex(@"^[\p{L}\p{N}]+$");
@@ -79,13 +80,9 @@ namespace LabsCompilator
             }
         }
 
-        static void Main(string[] args)
+
+        public static void CheckInteger(string val)
         {
-            Console.WriteLine("Введите выражение: ");
-            string val = "";
-            val = Console.ReadLine();
-            //var result = Identificator(val, 0, val.Length);
-            // var result = Number(val, 0, val.Length);
             Process process = new Process();
             int index = 0;
             for (int i = 0; i < val.Length; i++)
@@ -107,15 +104,74 @@ namespace LabsCompilator
                     process.MoveNext(Command.Resume);
                 }
             }
-            
+
             if (process.CurrentState == ProcessState.Terminated)
             {
-                Console.WriteLine("Результат: " + process.ToString());
+                Console.WriteLine("Выражение является целым числом, его состояние: " + process.ToString());
             }
-            if(index != 0)
+            if (index != 0)
             {
                 Console.WriteLine("Ошибка в индексе под номером " + index);
             }
+        }
+
+        public static string CheckIdentifier(string value)
+        {
+            ProcessIdentifier process = new ProcessIdentifier();
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (process.CurrentState != ProcessStateIdentifier.Error)
+                {
+                    if (process.CurrentState == ProcessStateIdentifier.Inactive)
+                    {
+
+                        MatchCollection matchesLetter = regexLetter.Matches(value[i].ToString());
+                        if (matchesLetter.Count == 0)
+                        {
+                            process.MoveNext(CommandIdentifier.Exception);
+                            return "Ошибка в индексе: " + (i + 1) + " состояние: " + process.ToString();
+                        }
+                        process.MoveNext(CommandIdentifier.Begin);
+                    }
+                    else
+                    {
+                        MatchCollection matchesNumber = regexNumber.Matches(value[i].ToString());
+                        if (matchesNumber.Count == 0)
+                        {
+                            MatchCollection matchesLetter = regexLetter.Matches(value[i].ToString());
+                            if (matchesLetter.Count == 0)
+                            {
+                                process.MoveNext(CommandIdentifier.Exception);
+                                return "Ошибка в индексе: " + (i + 1) + " состояние: " + process.ToString();
+                            }
+                            process.MoveNext(CommandIdentifier.ResumeLetter);
+                        }
+                        process.MoveNext(CommandIdentifier.ResumeNumeral);
+                    }
+                }
+                if (i == value.Length - 1)
+                {
+                    if (process.CurrentState != ProcessStateIdentifier.Error)
+                    {
+                        process.MoveNext(CommandIdentifier.Exit);
+                        return "Данное выражение является идентификатором";
+                    }
+                }
+            }
+            return "Результат = " + process.ToString();
+        }
+
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите выражение: ");
+            string val = "";
+            val = Console.ReadLine();
+            //var result = Identificator(val, 0, val.Length);
+            // var result = Number(val, 0, val.Length);
+            //CheckInteger(val);
+            string result = CheckIdentifier(val);
+            Console.WriteLine(result);
 
         }
 
